@@ -1,21 +1,17 @@
-// Categories Schema 
+// Categories Schema
 
 module.exports = (sequelize, DataTypes) => {
     let Categories = sequelize.define('Categories', {
-        categoryName: DataTypes.STRING,
+        name: DataTypes.STRING,
         description: DataTypes.STRING,
+        userId: DataTypes.INTEGER,
     });
 
     Categories.associate = function (models) {
-        Categories.hasMany(models.Products, {
-            foreignKey: 'categoryID',
-            as: 'products'
-        });
         Categories.belongsTo(models.Users, {
             onDelete: "CASCADE",
-            foreignKey: 'userID'
+            foreignKey: 'userId'
         });
     };
-
-    return Categories;
+    return Categories
 }

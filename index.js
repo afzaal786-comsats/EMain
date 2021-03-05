@@ -9,5 +9,6 @@ require('./routes')(app);
 
 const PORT = 3456;
 app.listen(PORT,() => {
+    
     console.log(`Server is listening to port ${PORT}`)
 })
